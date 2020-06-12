@@ -6,4 +6,5 @@
 - 默认账号密码 guest/guest
 - RabbitMQ官方文档 
 [https://www.rabbitmq.com/getstarted.html](https://www.rabbitmq.com/getstarted.html)
-运行ApplicationTests 测试消息生产及消费
+
+#### 运行ApplicationTests中test方法 测试消息生产及消费
