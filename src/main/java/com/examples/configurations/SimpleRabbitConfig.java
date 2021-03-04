@@ -4,6 +4,9 @@ import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * description: SimpleRabbitConfig <br>
  * date: 2020/6/11 14:04 <br>
@@ -39,12 +42,10 @@ public class SimpleRabbitConfig {
     /**
      * 绑定队列和交换机
      *
-     * @param exchange
-     * @param queue
      * @return
      */
     @Bean
-    Binding messageBinding(DirectExchange exchange, Queue queue) {
-        return BindingBuilder.bind(queue).to(exchange).with(QueueEnum.DIRECT_EXAMPLE.getRouteKey());
+    Binding messageBinding() {
+        return BindingBuilder.bind(queue()).to(messageDirect()).with(QueueEnum.DIRECT_EXAMPLE.getRouteKey());
     }
 }

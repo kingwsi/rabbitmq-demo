@@ -10,17 +10,31 @@ import lombok.Getter;
  */
 @Getter
 public enum QueueEnum {
-    DIRECT_EXAMPLE("direct.example.exchange", "direct.example.queue", "direct.example.routekey");
+    DIRECT_EXAMPLE("示例", "direct.exchange.example", QueueConst.EXAMPLE, "direct.routekey.example"),
+    DIRECT_DELAYED_TEST("延时队列测试", "direct.exchange.delayed", QueueConst.DELAYED, "delayed.routekey.delayed");
 
-    QueueEnum(String exchange, String queue, String routeKey) {
+    QueueEnum(String desc, String exchange, String queue, String routeKey) {
+        this.desc = desc;
         this.exchange = exchange;
         this.queue = queue;
         this.routeKey = routeKey;
     }
+
+    private String desc;
 
     private String exchange;
 
     private String queue;
 
     private String routeKey;
+
+    @Override
+    public String toString() {
+        return exchange;
+    }
+
+    public static class QueueConst {
+        final static String DELAYED = "direct.queue.delayed";
+        final static String EXAMPLE = "direct.queue.example";
+    }
 }
